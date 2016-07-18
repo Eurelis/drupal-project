@@ -1,0 +1,86 @@
+# If you need to run multiple instances of Drupal VM, set a unique hostname,
+# machine name, and IP address for each instance.
+vagrant_hostname: eurelis.dev
+vagrant_machine_name: eurelis
+vagrant_ip: 0.0.0.0
+
+# A list of synced folders, with the keys 'local_path', 'destination', and
+# a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
+# http://docs.drupalvm.com/en/latest/extras/syncing-folders/ for more info.
+vagrant_synced_folders:
+  # The first synced folder will be used for the default Drupal installation, if
+  # any of the build_* settings are 'true'. By default the folder is set to
+  # the drupal-vm folder.
+  - local_path: ../
+    destination: /var/www/drupalvm
+    type: nfs
+    create: true
+
+# Memory and CPU to use for this VM.
+vagrant_memory: 1024
+vagrant_cpus: 2
+
+drupal_core_path: "/var/www/drupalvm/drupal/www"
+
+# Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
+# are using Composer's create-project as a site deployment strategy.
+build_composer_project: false
+
+# Set this to 'false' if you don't need to install drupal (using the drupal_*
+# settings below), but instead copy down a database (e.g. using drush sql-sync).
+install_site: false
+
+# Cron jobs are added to the vagrant user's crontab. Keys include name
+# (required), minute, hour, day, weekday, month, job (required), and state.
+drupalvm_cron_jobs:
+   - {
+     name: "Drupal Cron",
+     minute: "*/30",
+     job: "drush -r {{ drupal_core_path }} core-cron"
+   }
+
+# Comment out any extra utilities you don't want to install. If you don't want
+# to install *any* extras, make set this value to an empty set, e.g. `[]`.
+installed_extras:
+  - adminer
+  # - blackfire
+  - drupalconsole
+  - mailhog
+  # - memcached
+  # - newrelic
+  - nodejs
+  - pimpmylog
+  # - redis
+  # - ruby
+  # - selenium
+  # - solr
+  - varnish
+  - xdebug
+  # - xhprof
+
+# Add any extra apt or yum packages you would like installed.
+extra_packages:
+  - sqlite
+  - emacs
+
+# `nodejs` must be in installed_extras for this to work. Valid examples: "0.10",
+# "0.12", "4.x", "5.x".
+nodejs_version: "5.x"
+nodejs_npm_global_packages: []
+nodejs_install_npm_user: "{{ drupalvm_user }}"
+
+# PHP Configuration. Currently-supported versions: 5.6, 7.0.
+# To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
+php_version: "7.0"
+php_memory_limit: "256M"
+
+# XDebug configuration. XDebug is disabled by default for better performance.
+php_xdebug_default_enable: 1
+php_xdebug_coverage_enable: 1
+php_xdebug_cli_enable: 1
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+# Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
+php_xdebug_idekey: PHPSTORM
+php_xdebug_max_nesting_level: 256
+
