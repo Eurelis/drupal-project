@@ -14,7 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 class ScriptHandler {
 
   protected static function getDrupalRoot($project_root) {
-    return $project_root . '/www';
+    return $project_root . '/drupal/www';
   }
 
   public static function createRequiredFiles(Event $event) {
