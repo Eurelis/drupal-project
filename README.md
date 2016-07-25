@@ -16,11 +16,11 @@ Inside the `drupal` directory, run `composer require drupal/MODULE_NAME`.
 
 By default if you do not provide a version it will get the latest stable one, minimum is dev if there is no stable release.
 
-Modules go to `drupal/www/modules/contrib`
-Themes go to `drupal/www/themes/contrib`
-Profiles go to `drupal/www/profiles/contrib`
-Drush extensions go to `drupal/drush/contrib`
-Other dependencies go to `drupal/vendor`
+* Modules go to `drupal/www/modules/contrib`
+* Themes go to `drupal/www/themes/contrib`
+* Profiles go to `drupal/www/profiles/contrib`
+* Drush extensions go to `drupal/drush/contrib`
+* Other dependencies go to `drupal/vendor`
 
 By default all the vendors are ignored by git (including the one cited above).
 
