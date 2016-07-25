@@ -1,6 +1,8 @@
 # Bootstraping a new Drupal 8 project
 
-`composer create-project eurelis/drupal-project DIRECTORY_PATH --repository="{\"type\":\"vcs\",\"url\":\"https://github.com/Eurelis/drupal-project\"}" --stability dev --prefer-dist --no-interaction`
+```
+composer create-project eurelis/drupal-project DIRECTORY_PATH --repository="{\"type\":\"vcs\",\"url\":\"https://github.com/Eurelis/drupal-project\"}" --stability dev --prefer-dist --no-interaction
+```
 
 This will clone this repo and run composer install, you'll have the structure ready.
 
