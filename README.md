@@ -29,6 +29,10 @@ By default all the vendors are ignored by git (including the one cited above).
 DrupalVM is included, if you want to use it rename `etc/example.config.yml` to `config.yml` and adapt to your project.
 Developers can override this file by putting a local.config.yml next to it (for example on Windows you need to use `smb` instead of `nfs`)
 
+[DrupalVM repo](https://github.com/geerlingguy/drupal-vm)
+
+[DrupalVM Documentation](http://docs.drupalvm.com/en/latest/)
+
 ## Recommanded Vagrant plugins
 
 Install them on commandline by using `vagrant plugin install PLUGINNAME`
